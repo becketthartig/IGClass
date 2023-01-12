@@ -7,7 +7,7 @@ img[src="ig_logo_cropped_AdobeExpress.gif"]:hover, img[src="recording_of_scrolle
     outline-offset: -8px;
 }
 
-img[src="ig_logo_cropped_AdobeExpress.gif"], img[src="recording_of_scroller_AdobeExpress.gif"], img[src="Ponyta - Beckett (1).gif"] {
+img[src="recording_of_scroller_AdobeExpress.gif"], img[src="Ponyta - Beckett (1).gif"] {
     position: relative;
     top:-5px;
 }
