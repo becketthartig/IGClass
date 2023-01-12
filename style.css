@@ -1,1 +1,18 @@
+* {
+    margin: 0;
+}
 
+img[src="Screen Shot 2023-01-12 at 12.17.45 PM.png"] {
+    outline: 8px solid white;
+    outline-offset: -8px;
+}
+
+img[src="recording_of_scroller_AdobeExpress.gif"] {
+    outline: 8px solid white;
+    outline-offset: -8px;
+}
+
+img[src="Ponyta - Beckett (1).gif"] {
+    outline: 8px solid white;
+    outline-offset: -8px;
+}
