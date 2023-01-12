@@ -16,3 +16,7 @@ img[src="Ponyta - Beckett (1).gif"]:hover {
     outline: 8px solid white;
     outline-offset: -8px;
 }
+
+body {
+    background-color: coral;
+}
