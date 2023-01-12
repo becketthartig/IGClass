@@ -2,12 +2,12 @@
     margin: 0;
 }
 
-img[src="Screen Shot 2023-01-12 at 12.17.45 PM.png"]:hover, img[src="recording_of_scroller_AdobeExpress.gif"]:hover, img[src="Ponyta - Beckett (1).gif"]:hover {
+img[src="ig_logo_cropped_AdobeExpress.gif"]:hover, img[src="recording_of_scroller_AdobeExpress.gif"]:hover, img[src="Ponyta - Beckett (1).gif"]:hover {
     outline: 8px solid white;
     outline-offset: -8px;
 }
 
-img[src="Screen Shot 2023-01-12 at 12.17.45 PM.png"], img[src="recording_of_scroller_AdobeExpress.gif"], img[src="Ponyta - Beckett (1).gif"] {
+img[src="ig_logo_cropped_AdobeExpress.gif"], img[src="recording_of_scroller_AdobeExpress.gif"], img[src="Ponyta - Beckett (1).gif"] {
     position: relative;
     top:-5px;
 }
