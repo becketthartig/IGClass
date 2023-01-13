@@ -3,7 +3,7 @@ let fil = false;
 
 function setup() {
   
-  createCanvas(500, 500);
+  createCanvas(windowWidth / 3, windowHeight / 3);
   strokeWeight(1);
   
   ponyta = new Ponyta(50, 100, 0);
@@ -701,4 +701,8 @@ class Cube { //Essentially the cube from class but with color (defined in the co
     }
   }
   
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth / 3, windowHeight / 3);
 }
