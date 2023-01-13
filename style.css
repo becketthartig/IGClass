@@ -7,6 +7,11 @@ img[src="graphicsgif_AdobeExpress.gif"]:hover, img[src="recording_of_scroller_Ad
     outline-offset: -8px;
 }
 
+img[src="Screen Shot 2023-01-12 at 8.29.24 PM.png"]:hover {
+    outline: 8px solid #5300DF;
+    outline-offset: -8px;
+}
+
 img[src="recording_of_scroller_AdobeExpress.gif"], img[src="Ponyta - Beckett (1).gif"] {
     position: relative;
     top:-5px;
