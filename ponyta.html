@@ -10,5 +10,148 @@
   </head>
   <body>
     <script src="ponyta.js"></script>
+    <p>10 gr
+20 let iyoff = 0
+21 let gxoff = 5
+22 let gyoff = 15
+23 let dxoff = 37
+24 let dyoff = 8
+30 color = 6
+40 for i = 0 to 29
+42 iyoff = i
+44 gosub 500
+46 next i
+48 color = 15
+49 gosub 1250
+50 gosub 1000
+55 color = 3
+60 gosub 80
+70 end
+
+80 hlin dxoff, dxoff + 2 at dyoff
+90 hlin dxoff, dxoff + 2 at dyoff + 2
+100 hlin dxoff, dxoff + 2 at dyoff + 4
+110 plot dxoff + 2, dyoff + 1
+120 plot dxoff, dyoff + 3
+130 hlin dxoff, dxoff + 2 at dyoff + 6
+140 hlin dxoff, dxoff + 2 at dyoff + 8
+150 hlin dxoff, dxoff + 2 at dyoff + 10
+160 plot dxoff + 2, dyoff + 7
+170 plot dxoff, dyoff + 9
+180 plot dxoff + 1, dyoff + 12
+190 hlin dxoff, dxoff + 2 at dyoff + 14
+200 hlin dxoff, dxoff + 2 at dyoff + 16
+210 hlin dxoff, dxoff + 2 at dyoff + 18
+220 plot dxoff + 2, dyoff + 15
+230 plot dxoff, dyoff + 17
+240 hlin dxoff, dxoff + 2 at dyoff + 20
+250 hlin dxoff, dxoff + 2 at dyoff + 22
+260 hlin dxoff, dxoff + 2 at dyoff + 24
+270 plot dxoff + 2, dyoff + 21
+280 plot dxoff + 2, dyoff + 23
+290 return
+
+500 vlin iyoff, 10 + iyoff at 0
+510 vlin iyoff, 10 + iyoff at 2
+530 plot 3, 3 + iyoff
+535 plot 3, 4 + iyoff
+540 plot 3, 2 + iyoff
+545 plot 4, 5 + iyoff
+550 plot 4, 6 + iyoff
+555 plot 4, 7 + iyoff
+560 vlin iyoff, 10 + iyoff at 5
+570 vlin iyoff, 10 + iyoff at 8
+580 hlin 7, 9 at iyoff 
+590 hlin 7, 9 at 1 + iyoff
+600 vlin iyoff, 10 + iyoff at 11
+610 hlin 12, 13 at iyoff
+620 hlin 12, 13 at 1 + iyoff
+630 hlin 12, 13 at 4 + iyoff
+640 hlin 12, 13 at 5 + iyoff
+650 hlin 12, 13 at 9 + iyoff
+660 hlin 12, 13 at 10 + iyoff
+670 vlin iyoff, 10 + iyoff at 15
+680 plot 16, iyoff
+690 plot 16, iyoff + 1
+700 plot 16, iyoff + 6
+710 plot 16, iyoff + 5
+720 vlin iyoff + 2, iyoff + 4 at 17
+730 plot 20, iyoff 
+740 vlin 7 + iyoff, 10 + iyoff at 17
+750 vlin 2 + iyoff, 10 + iyoff at 19
+760 vlin 2 + iyoff, 10 + iyoff at 21
+770 plot 20, iyoff + 1
+780 plot 20, iyoff + 6
+790 plot 20, iyoff + 5
+800 vlin 2 + iyoff, 8 + iyoff at 23
+810 hlin 24, 25 at iyoff
+820 hlin 24, 25 at iyoff + 1
+830 hlin 24, 25 at iyoff + 9
+840 hlin 24, 25 at iyoff + 10
+850 vlin iyoff, 10 + iyoff at 28
+860 hlin 27, 29 at iyoff 
+870 hlin 27, 29 at 1 + iyoff
+880 vlin iyoff, 10 + iyoff at 31
+890 vlin iyoff, 8 + iyoff at 33
+900 vlin iyoff, 8 + iyoff at 35
+910 vlin 9 + iyoff, 10 + iyoff at 34
+920 vlin iyoff, 10 + iyoff at 37
+930 hlin 38, 39 at iyoff
+940 hlin 38, 39 at 1 + iyoff
+950 hlin 38, 39 at 4 + iyoff
+960 hlin 38, 39 at 5 + iyoff
+970 hlin 38, 39 at 9 + iyoff
+980 hlin 38, 39 at 10 + iyoff
+990 return
+
+1000 for x = 0 to 19
+1010 plot x + 10, sqr(156.25 - (x - 9.5) ^ 2) + 20
+1015 plot x + 10, - sqr(156.25 - (x - 9.5) ^ 2) + 21
+1020 next x
+1030 return
+
+1250 vlin 2 + gyoff, 8 + gyoff at gxoff
+1260 hlin 1 + gxoff, 3 + gxoff at gyoff
+1270 hlin 1 + gxoff, 3 + gxoff at gyoff + 1
+1280 hlin 1 + gxoff, 2 + gxoff at gyoff + 9
+1290 hlin 1 + gxoff, 2 + gxoff at gyoff + 10
+1300 vlin 5 + gyoff, 10 + gyoff at gxoff + 3
+1310 vlin gyoff, 10 + gyoff at 5 + gxoff
+1320 plot 6 + gxoff, gyoff
+1330 plot 6 + gxoff, gyoff + 1
+1340 plot 6 + gxoff, gyoff + 6
+1350 plot 6 + gxoff, gyoff + 5
+1360 vlin gyoff + 2, gyoff + 4 at 7 + gxoff
+1370 vlin gyoff + 7, gyoff + 10 at 7 + gxoff
+1380 plot 10 + gxoff, gyoff 
+1400 vlin 2 + gyoff, 10 + gyoff at 9 + gxoff
+1410 vlin 2 + gyoff, 10 + gyoff at 11 + gxoff
+1420 plot 10 + gxoff, gyoff + 1
+1430 plot 10 + gxoff, gyoff + 6
+1440 plot 10 + gxoff, gyoff + 5
+1450 vlin gyoff, 10 + gyoff at 13 + gxoff
+1460 plot 14 + gxoff, gyoff
+1470 plot 14 + gxoff, gyoff + 1
+1480 plot 14 + gxoff, gyoff + 6
+1490 plot 14 + gxoff, gyoff + 5
+1500 vlin gyoff + 2, gyoff + 4 at 15 + gxoff
+1510 vlin gyoff, gyoff + 10 at 17 + gxoff
+1520 vlin gyoff, gyoff + 10 at 19 + gxoff
+1530 plot 18 + gxoff, gyoff + 4
+1540 plot 18 + gxoff, gyoff + 5
+1550 vlin gyoff, gyoff + 10 at 21 + gxoff
+1560 vlin 2 + gyoff, 8 + gyoff at 23 + gxoff
+1570 hlin 24 + gxoff, 25 + gxoff at gyoff
+1580 hlin 24 + gxoff, 25 + gxoff at gyoff + 1
+1590 hlin 24 + gxoff, 25 + gxoff at gyoff + 9
+1600 hlin 24 + gxoff, 25 + gxoff at gyoff + 10
+1610 vlin gyoff + 2, gyoff + 4 at 27 + gxoff
+1620 vlin gyoff + 6, gyoff + 8 at 29 + gxoff
+1630 hlin gxoff + 28, gxoff + 29 at gyoff
+1640 hlin gxoff + 28, gxoff + 29 at gyoff + 1
+1650 hlin gxoff + 27, gxoff + 28 at gyoff + 9
+1660 hlin gxoff + 27, gxoff + 28 at gyoff + 10
+1670 plot gxoff + 28, gyoff + 5
+      1680 return</p>
   </body>
 </html>
