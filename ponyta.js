@@ -3,7 +3,9 @@ let fil = false;
 
 function setup() {
   
-  createCanvas(windowWidth / 3, windowWidth / 3);
+  var canvas = createCanvas(windowWidth / 3, windowWidth / 3);
+  canvas.parent('sketch-holder');
+  
   strokeWeight(1);
   
   ponyta = new Ponyta(50, 100, 0);
