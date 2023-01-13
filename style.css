@@ -34,6 +34,8 @@ canvas {
 
 body {
     background-color: #36c3ff;
+    color: white;
+    font-family: "Helvetica Neue";
 }
 
 body.index {
