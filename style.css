@@ -14,7 +14,7 @@ img[src="Screen Shot 2023-01-12 at 8.29.24 PM.png"]:hover {
 
 img[src="recording_of_scroller_AdobeExpress.gif"], img[src="Ponyta - Beckett (1).gif"], img[src="Screen Shot 2023-01-12 at 8.47.08 PM.png"].rowtwo {
     position: relative;
-    top:-5px;
+    top: -5px;
 }
 
 img[src="Screen Shot 2023-01-12 at 8.47.08 PM.png"].rowthree {
@@ -42,7 +42,7 @@ body {
 }
 
 body.rawcode {
-    padding 10px 10px;
+    padding: 10px 10px;
 }
 
 body.index {
