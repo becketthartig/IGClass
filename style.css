@@ -2,7 +2,7 @@
     margin: 0;
 }
 
-img[src="ig_logo_cropped_AdobeExpress.gif"]:hover, img[src="recording_of_scroller_AdobeExpress.gif"]:hover, img[src="Ponyta - Beckett (1).gif"]:hover {
+img[src="graphicsgif_AdobeExpress.gif"]:hover, img[src="recording_of_scroller_AdobeExpress.gif"]:hover, img[src="Ponyta - Beckett (1).gif"]:hover {
     outline: 8px solid white;
     outline-offset: -8px;
 }
