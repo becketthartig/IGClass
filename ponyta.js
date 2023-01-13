@@ -3,8 +3,7 @@ let fil = false;
 
 function setup() {
   
-  var canvas = createCanvas(windowWidth / 3, windowWidth / 3);
-  canvas.parent('sketch-holder');
+  createCanvas(windowWidth / 3, windowWidth / 3);
   
   strokeWeight(1);
   
