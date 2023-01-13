@@ -40,6 +40,6 @@ body {
     position: relative;
     top: -5px;
     border: 16px solid #00008B;
-    height: 200px;
-    padding: 5px 8px;
+    height: calc(100vh - 100vw/3 - 41px);
+    padding: 5px 12px;
 }
