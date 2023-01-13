@@ -37,11 +37,11 @@ body {
 }
 
 body.index {
-    height: 100vh;
+    height: 100vw;
 }
 
 body.ponyta {
-    height: 100vw;
+    height: 100vh;
 }
 
 .blurb {
