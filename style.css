@@ -29,9 +29,17 @@ img[src="Screen Shot 2023-01-12 at 9.52.47 PM.png"] {
 
 canvas {
     position: absolute;
-    top: 0px;
+    top: -1px;
 }
 
 body {
     background-color: #36c3ff;
+}
+
+.blurb {
+    position: relative;
+    top: -5px;
+    border: 16px solid #00008B;
+    height: 200px;
+    padding: 5px 8px;
 }
