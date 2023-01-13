@@ -32,7 +32,7 @@ canvas {
     top: -1px;
 }
 
-body.index, body.ponyta, body.iglogo {
+body.index, body.ponyta, body.iglogo, body.appleiianimation {
     background-color: #36c3ff;
     color: white;
 }
@@ -49,7 +49,7 @@ body.index {
     height: 100vw;
 }
 
-body.ponyta, body.iglogo {
+body.ponyta, body.iglogo, body.appleiianimation {
     height: 100vh;
 }
 
