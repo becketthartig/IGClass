@@ -36,6 +36,14 @@ body {
     background-color: #36c3ff;
 }
 
+body.index {
+    height: 100vh;
+}
+
+body.ponyta {
+    height: 100vw;
+}
+
 .blurb {
     position: relative;
     top: -5px;
