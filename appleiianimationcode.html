@@ -11,148 +11,174 @@
     <a href="iglogo.html">< Return</a>
     <br>
     <br>
-    <p>10 gr<br>
-20 let iyoff = 0<br>
-21 let gxoff = 5<br>
-22 let gyoff = 15<br>
-23 let dxoff = 37<br>
-24 let dyoff = 8<br>
-30 color = 6<br>
-40 for i = 0 to 29<br>
-42 iyoff = i<br>
-44 gosub 500<br>
-46 next i<br>
-48 color = 15<br>
-49 gosub 1250<br>
-50 gosub 1000<br>
-55 color = 3<br>
-60 gosub 80<br>
-70 end<br>
+    <p>10 text<br>
+20 home<br>
+30 print "INFINITE LANDSCAPE ANIMATION"<br>
+35 print ""<br>
+40 print "Input biome weights:"<br>
+50 input "Ocean (n) = "; oc<br>
+60 input "Plains (n) = "; pl<br>
+70 input "Mountains (n) = "; mt<br>
+74 print ""<br>
+90 print "Transition between biomes:"<br>
+95 print "n < very often"<br>
+100 input "Blending coef = "; bc<br>
+105 let sc = 0<br>
+110 let dt = 0<br>
+115 let ft = 0<br>
+120 let in = -1<br>
+125 let ma = 0<br>
+126 let oa = 0<br>
+130 dim fg(15, 4)<br>
+140 let bi = 1<br>
+150 gosub 1000<br>
+165 rem looped code follows<br>
+169 rem "poke" used for double buffering functionality<br>
+170 poke 230, (sc + 1) * 32<br>
+200 hgr2<br>
+240 dt = dt + 2.5<br>
+245 ft = ft + 1<br>
+259 rem rendering code<br>
+260 for i = 0 to 15<br>
+261 if fg(i, 4) = 0 then hcolor = 6<br>
+262 if fg(i, 4) = 1 then hcolor = 1<br>
+263 if fg(i, 4) = 2 then hcolor = 2<br>
+264 if fg(i, 4) = 3 then hcolor = 5<br>
+265 if fg(i, 4) = 4 then hcolor = 3<br>
+270 if fg(i, 0) - dt < 0 and fg(i, 2) - dt > 0 then hplot  0, (fg(i, 3) - fg(i, 1)) / (fg(i, 2) - fg(i, 0)) * (-fg(i, 0) + dt) + fg(i, 1) to fg(i, 2) - dt, fg(i, 3)<br>
+280 if fg(i, 0) - dt < 279 and fg(i, 2) - dt > 279 then hplot fg(i, 0) - dt, fg(i, 1) to 279, (fg(i, 3) - fg(i, 1)) / (fg(i, 2) - fg(i, 0)) * (279 - fg(i, 0) + dt) + fg(i, 1)<br>
+290 if fg(i, 0) - dt >= 0 and fg(i, 2) - dt <= 279 then hplot fg(i, 0) - dt, fg(i, 1) to fg(i, 2) - dt, fg(i, 3)<br>
+298 next i<br>
+310 if ft = 8 then gosub 1900<br>
+325 for i = 0 to 50<br>
+330 next i<br>
+340 poke 49237 - sc, 0<br>
+345 sc = (sc - 1) * -1<br>
+350 goto 165<br>
 <br>
-80 hlin dxoff, dxoff + 2 at dyoff<br>
-90 hlin dxoff, dxoff + 2 at dyoff + 2<br>
-100 hlin dxoff, dxoff + 2 at dyoff + 4<br>
-110 plot dxoff + 2, dyoff + 1<br>
-120 plot dxoff, dyoff + 3<br>
-130 hlin dxoff, dxoff + 2 at dyoff + 6<br>
-140 hlin dxoff, dxoff + 2 at dyoff + 8<br>
-150 hlin dxoff, dxoff + 2 at dyoff + 10<br>
-160 plot dxoff + 2, dyoff + 7<br>
-170 plot dxoff, dyoff + 9<br>
-180 plot dxoff + 1, dyoff + 12<br>
-190 hlin dxoff, dxoff + 2 at dyoff + 14<br>
-200 hlin dxoff, dxoff + 2 at dyoff + 16<br>
-210 hlin dxoff, dxoff + 2 at dyoff + 18<br>
-220 plot dxoff + 2, dyoff + 15<br>
-230 plot dxoff, dyoff + 17<br>
-240 hlin dxoff, dxoff + 2 at dyoff + 20<br>
-250 hlin dxoff, dxoff + 2 at dyoff + 22<br>
-260 hlin dxoff, dxoff + 2 at dyoff + 24<br>
-270 plot dxoff + 2, dyoff + 21<br>
-280 plot dxoff + 2, dyoff + 23<br>
-290 return<br>
+999 end<br>
 <br>
-500 vlin iyoff, 10 + iyoff at 0<br>
-510 vlin iyoff, 10 + iyoff at 2<br>
-530 plot 3, 3 + iyoff<br>
-535 plot 3, 4 + iyoff<br>
-540 plot 3, 2 + iyoff<br>
-545 plot 4, 5 + iyoff<br>
-550 plot 4, 6 + iyoff<br>
-555 plot 4, 7 + iyoff<br>
-560 vlin iyoff, 10 + iyoff at 5<br>
-570 vlin iyoff, 10 + iyoff at 8<br>
-580 hlin 7, 9 at iyoff <br>
-590 hlin 7, 9 at 1 + iyoff<br>
-600 vlin iyoff, 10 + iyoff at 11<br>
-610 hlin 12, 13 at iyoff<br>
-620 hlin 12, 13 at 1 + iyoff<br>
-630 hlin 12, 13 at 4 + iyoff<br>
-640 hlin 12, 13 at 5 + iyoff<br>
-650 hlin 12, 13 at 9 + iyoff<br>
-660 hlin 12, 13 at 10 + iyoff<br>
-670 vlin iyoff, 10 + iyoff at 15<br>
-680 plot 16, iyoff<br>
-690 plot 16, iyoff + 1<br>
-700 plot 16, iyoff + 6<br>
-710 plot 16, iyoff + 5<br>
-720 vlin iyoff + 2, iyoff + 4 at 17<br>
-730 plot 20, iyoff <br>
-740 vlin 7 + iyoff, 10 + iyoff at 17<br>
-750 vlin 2 + iyoff, 10 + iyoff at 19<br>
-760 vlin 2 + iyoff, 10 + iyoff at 21<br>
-770 plot 20, iyoff + 1<br>
-780 plot 20, iyoff + 6<br>
-790 plot 20, iyoff + 5<br>
-800 vlin 2 + iyoff, 8 + iyoff at 23<br>
-810 hlin 24, 25 at iyoff<br>
-820 hlin 24, 25 at iyoff + 1<br>
-830 hlin 24, 25 at iyoff + 9<br>
-840 hlin 24, 25 at iyoff + 10<br>
-850 vlin iyoff, 10 + iyoff at 28<br>
-860 hlin 27, 29 at iyoff <br>
-870 hlin 27, 29 at 1 + iyoff<br>
-880 vlin iyoff, 10 + iyoff at 31<br>
-890 vlin iyoff, 8 + iyoff at 33<br>
-900 vlin iyoff, 8 + iyoff at 35<br>
-910 vlin 9 + iyoff, 10 + iyoff at 34<br>
-920 vlin iyoff, 10 + iyoff at 37<br>
-930 hlin 38, 39 at iyoff<br>
-940 hlin 38, 39 at 1 + iyoff<br>
-950 hlin 38, 39 at 4 + iyoff<br>
-960 hlin 38, 39 at 5 + iyoff<br>
-970 hlin 38, 39 at 9 + iyoff<br>
-980 hlin 38, 39 at 10 + iyoff<br>
-990 return<br>
+1000 rem initialize foreground<br>
+1001 rem **always starts with a full screen of plains<br>
+1002 fg(15, 3) = rnd(1) * 20 + 113<br>
+1005 for i = 0 to 15<br>
+1006 in = in + 1<br>
+1010 fg(in, 0) = i * 20<br>
+1020 if in = 0 then fg(in, 1) = fg(15, 3)<br>
+1025 if in >< 0 then fg(in, 1) = fg(in - 1, 3)<br>
+1030 fg(in, 2) = i * 20 + 20<br>
+1040 fg(in, 3) = fg(in, 1) + rnd(1) * 8 - 4<br>
+1045 if fg(in, 3) < 113 then fg(in, 3) = 113<br>
+1046 if fg(in, 3) > 133 then fg(in, 3) = 133<br>
+1050 fg(in, 4) = 1<br>
+1060 next i<br>
+1070 return<br>
 <br>
-1000 for x = 0 to 19<br>
-1010 plot x + 10, sqr(156.25 - (x - 9.5) ^ 2) + 20<br>
-1015 plot x + 10, - sqr(156.25 - (x - 9.5) ^ 2) + 21<br>
-1020 next x<br>
-1030 return<br>
+1900 rem determine biome type<br>
+1901 if int(rnd(1) * bc) = 0 then gosub 1950<br>
+1909 if bi = 0 then gosub 2000<br>
+1910 if bi = 1 then gosub 2300<br>
+1920 if bi = 2 then gosub 2600<br>
+1930 ft = 0<br>
+1940 return<br>
+1950 let ne = int(rnd(1) * (oc + pl + mt))<br>
+1951 ma = 0<br>
+1952 oa = 0<br>
+1954 if bi = 0 then oa = 1<br>
+1955 if bi = 2 then ma = 1<br>
+1960 if ne < oc + pl + mt then bi = 2<br>
+1970 if ne < oc + pl then bi = 1<br>
+1980 if ne < oc then bi = 0<br>
+1985 if ne < oc then oa = 1<br>
+1990 return<br>
 <br>
-1250 vlin 2 + gyoff, 8 + gyoff at gxoff<br>
-1260 hlin 1 + gxoff, 3 + gxoff at gyoff<br>
-1270 hlin 1 + gxoff, 3 + gxoff at gyoff + 1<br>
-1280 hlin 1 + gxoff, 2 + gxoff at gyoff + 9<br>
-1290 hlin 1 + gxoff, 2 + gxoff at gyoff + 10<br>
-1300 vlin 5 + gyoff, 10 + gyoff at gxoff + 3<br>
-1310 vlin gyoff, 10 + gyoff at 5 + gxoff<br>
-1320 plot 6 + gxoff, gyoff<br>
-1330 plot 6 + gxoff, gyoff + 1<br>
-1340 plot 6 + gxoff, gyoff + 6<br>
-1350 plot 6 + gxoff, gyoff + 5<br>
-1360 vlin gyoff + 2, gyoff + 4 at 7 + gxoff<br>
-1370 vlin gyoff + 7, gyoff + 10 at 7 + gxoff<br>
-1380 plot 10 + gxoff, gyoff <br>
-1400 vlin 2 + gyoff, 10 + gyoff at 9 + gxoff<br>
-1410 vlin 2 + gyoff, 10 + gyoff at 11 + gxoff<br>
-1420 plot 10 + gxoff, gyoff + 1<br>
-1430 plot 10 + gxoff, gyoff + 6<br>
-1440 plot 10 + gxoff, gyoff + 5<br>
-1450 vlin gyoff, 10 + gyoff at 13 + gxoff<br>
-1460 plot 14 + gxoff, gyoff<br>
-1470 plot 14 + gxoff, gyoff + 1<br>
-1480 plot 14 + gxoff, gyoff + 6<br>
-1490 plot 14 + gxoff, gyoff + 5<br>
-1500 vlin gyoff + 2, gyoff + 4 at 15 + gxoff<br>
-1510 vlin gyoff, gyoff + 10 at 17 + gxoff<br>
-1520 vlin gyoff, gyoff + 10 at 19 + gxoff<br>
-1530 plot 18 + gxoff, gyoff + 4<br>
-1540 plot 18 + gxoff, gyoff + 5<br>
-1550 vlin gyoff, gyoff + 10 at 21 + gxoff<br>
-1560 vlin 2 + gyoff, 8 + gyoff at 23 + gxoff<br>
-1570 hlin 24 + gxoff, 25 + gxoff at gyoff<br>
-1580 hlin 24 + gxoff, 25 + gxoff at gyoff + 1<br>
-1590 hlin 24 + gxoff, 25 + gxoff at gyoff + 9<br>
-1600 hlin 24 + gxoff, 25 + gxoff at gyoff + 10<br>
-1610 vlin gyoff + 2, gyoff + 4 at 27 + gxoff<br>
-1620 vlin gyoff + 6, gyoff + 8 at 29 + gxoff<br>
-1630 hlin gxoff + 28, gxoff + 29 at gyoff<br>
-1640 hlin gxoff + 28, gxoff + 29 at gyoff + 1<br>
-1650 hlin gxoff + 27, gxoff + 28 at gyoff + 9<br>
-1660 hlin gxoff + 27, gxoff + 28 at gyoff + 10<br>
-1670 plot gxoff + 28, gyoff + 5<br>
-1680 return<br></p>
+2000 rem generate ocean tile<br>
+2005 in = in + 1<br>
+2010 if in = 16 then gosub 2040<br>
+2020 if in >< 16 and in > 0 then gosub 2120<br>
+2025 fg(in, 4) = 0<br>
+2026 if oa = 1 then gosub 2950<br>
+2027 if ma = 1 then gosub 2900<br>
+2030 return<br>
+2040 in = 0<br>
+2050 fg(0, 0) = fg(15, 2)<br>
+2060 fg(0, 1) = fg(15, 3)<br>
+2065 fg(0, 2) = fg(0, 0) + 20<br>
+2070 fg(0, 3) = fg(0, 1) + rnd(1) * 6 - 3<br>
+2080 if fg(0, 3) < 135 then fg(0, 3) = 135<br>
+2090 if fg(0, 3) > 141 then fg(0, 3) = 141<br>
+2100 return<br>
+2120 fg(in, 0) = fg(in - 1, 2)<br>
+2130 fg(in, 1) = fg(in - 1, 3)<br>
+2140 fg(in, 2) = fg(in, 0) + 20<br>
+2150 fg(in, 3) = fg(in, 1) + rnd(1) * 6 - 3<br>
+2160 if fg(in, 3) < 135 then fg(in, 3) = 135<br>
+2170 if fg(in, 3) > 141 then fg(in, 3) = 141<br>
+2180 return<br>
+<br>
+2300 rem generate plains tile<br>
+2305 in = in + 1<br>
+2310 if in = 16 then gosub 2340<br>
+2320 if in >< 16 and in > 0 then gosub 2420<br>
+2325 fg(in, 4) = 1<br>
+2326 if ma = 1 then gosub 2900<br>
+2327 if oa = 1 then gosub 2950<br>
+2330 return<br>
+2340 in = 0<br>
+2350 fg(0, 0) = fg(15, 2)<br>
+2360 fg(0, 1) = fg(15, 3)<br>
+2365 fg(0, 2) = fg(0, 0) + 20<br>
+2370 fg(0, 3) = fg(0, 1) + rnd(1) * 10 - 5<br>
+2380 if fg(0, 3) < 113 then fg(0, 3) = 113<br>
+2390 if fg(0, 3) > 133 then fg(0, 3) = 133<br>
+2400 return<br>
+2420 fg(in, 0) = fg(in - 1, 2)<br>
+2430 fg(in, 1) = fg(in - 1, 3)<br>
+2440 fg(in, 2) = fg(in, 0) + 20<br>
+2450 fg(in, 3) = fg(in, 1) + rnd(1) * 10 - 5<br>
+2460 if fg(in, 3) < 113 then fg(in, 3) = 113<br>
+2470 if fg(in, 3) > 133 then fg(in, 3) = 133<br>
+2480 return<br>
+<br>
+2600 rem generate mountain tile<br>
+2605 in = in + 1<br>
+2610 if in = 16 then gosub 2640<br>
+2620 if in >< 16 and in > 0 then gosub 2720<br>
+2625 if (fg(in, 1) + fg(in, 3)) / 2 < 50 then fg(in, 4) = 4<br>
+2626 if (fg(in, 1) + fg(in, 3)) / 2 >= 50 then fg(in, 4) = 2<br>
+2629 if oa = 1 then gosub 2950<br>
+2630 return<br>
+2640 in = 0<br>
+2650 fg(0, 0) = fg(15, 2)<br>
+2660 fg(0, 1) = fg(15, 3)<br>
+2665 fg(0, 2) = fg(0, 0) + 20<br>
+2670 fg(0, 3) = fg(0, 1) + rnd(1) * 70 - 35<br>
+2671 if fg(0, 3) > fg(0, 1) and fg(0, 1) > 80 then fg(0, 3) = fg(0, 1) + rnd(1) * 70 - 35<br>
+2672 if fg(0, 3) < fg(0, 1) and fg(0, 1) < 15 then fg(0, 3) = fg(0, 1) + rnd(1) * 70 - 35<br>
+2680 if fg(0, 3) < 0 then fg(0, 3) = 0<br>
+2690 if fg(0, 3) > 113 then fg(0, 3) = 113<br>
+2700 return<br>
+2720 fg(in, 0) = fg(in - 1, 2)<br>
+2730 fg(in, 1) = fg(in - 1, 3)<br>
+2740 fg(in, 2) = fg(in, 0) + 20<br>
+2750 fg(in, 3) = fg(in, 1) + rnd(1) * 70 - 35<br>
+2751 if fg(in, 3) > fg(in, 1) and fg(in, 1) > 80 then fg(in, 3) = fg(in, 1) + rnd(1) * 70 - 35<br>
+2752 if fg(in, 3) < fg(in, 1) and fg(in, 1) < 15 then fg(in, 3) = fg(in, 1) + rnd(1) * 70 - 35<br>
+2760 if fg(in, 3) < 0 then fg(in, 3) = 0<br>
+2770 if fg(in, 3) > 113 then fg(in, 3) = 113<br>
+2780 return<br>
+<br>
+2900 rem smooth transitions between biomes..<br>
+2901 rem i.e. make them more realistic<br>
+2902 if oa = 1 then return<br>
+2910 fg(in, 4) = 2<br>
+2920 ma = 0<br>
+2930 return<br>
+<br>
+2950 rem ^^^<br>
+2951 if ma = 1 then gosub 2910<br>
+2960 fg(in, 4) = 3<br>
+2970 oa = 0<br>
+2980 return<br></p>
   </body>
 </html>
