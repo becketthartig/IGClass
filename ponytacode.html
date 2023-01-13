@@ -14,705 +14,705 @@
 let fil = false;<br>
 <br>
 function setup() {<br>
-&ensp;<br>
-&ensp;createCanvas(500, 500);<br>
-&ensp;strokeWeight(1);<br>
-&ensp;<br>
-&ensp;ponyta = new Ponyta(50, 100, 0);<br>
-&ensp;<br>
-&ensp;//Rotate to be like the image I was looking at to make this<br>
-&ensp;//ponyta.rotate(0, PI / 4 - 0.05, 0);<br>
-&ensp;//ponyta.rotate(PI / 12, 0, 0);<br>
-&ensp;<br>
+&emsp;<br>
+&emsp;createCanvas(500, 500);<br>
+&emsp;strokeWeight(1);<br>
+&emsp;<br>
+&emsp;ponyta = new Ponyta(50, 100, 0);<br>
+&emsp;<br>
+&emsp;//Rotate to be like the image I was looking at to make this<br>
+&emsp;//ponyta.rotate(0, PI / 4 - 0.05, 0);<br>
+&emsp;//ponyta.rotate(PI / 12, 0, 0);<br>
+&emsp;<br>
 }<br>
 <br>
 function draw() {<br>
-&ensp;<br>
-&ensp;background(120);<br>
-&ensp;translate(width / 2, height / 2);<br>
-&ensp;<br>
-&ensp;/* //CONSTANT ROTATION<br>
-&ensp;ponyta.rotate(0, 0.02, 0.005); */<br>
-&ensp;<br>
-&ensp;//ROTATE USING ARROW KEYS<br>
-&ensp;if(keyIsDown(RIGHT_ARROW)) {<br>
-&ensp;&ensp;ponyta.rotate(0, -0.03, 0);<br>
-&ensp;}<br>
-&ensp;if(keyIsDown(LEFT_ARROW)) {<br>
-&ensp;&ensp;ponyta.rotate(0, 0.03, 0);<br>
-&ensp;}<br>
-&ensp;if(keyIsDown(UP_ARROW)) {<br>
-&ensp;&ensp;ponyta.rotate(-0.03, 0, 0);<br>
-&ensp;}<br>
-&ensp;if(keyIsDown(DOWN_ARROW)) {<br>
-&ensp;&ensp;ponyta.rotate(0.03, 0, 0);<br>
-&ensp;}<br>
-&ensp;<br>
-&ensp;//ponyta.renderWireframe();<br>
-&ensp;<br>
-&ensp;if(fil) {<br>
-&ensp;&ensp;ponyta.renderVoxel();<br>
-&ensp;}<br>
-&ensp;else {<br>
-&ensp;&ensp;ponyta.renderWireframe();<br>
-&ensp;}<br>
+&emsp;<br>
+&emsp;background(120);<br>
+&emsp;translate(width / 2, height / 2);<br>
+&emsp;<br>
+&emsp;/* //CONSTANT ROTATION<br>
+&emsp;ponyta.rotate(0, 0.02, 0.005); */<br>
+&emsp;<br>
+&emsp;//ROTATE USING ARROW KEYS<br>
+&emsp;if(keyIsDown(RIGHT_ARROW)) {<br>
+&emsp;&emsp;ponyta.rotate(0, -0.03, 0);<br>
+&emsp;}<br>
+&emsp;if(keyIsDown(LEFT_ARROW)) {<br>
+&emsp;&emsp;ponyta.rotate(0, 0.03, 0);<br>
+&emsp;}<br>
+&emsp;if(keyIsDown(UP_ARROW)) {<br>
+&emsp;&emsp;ponyta.rotate(-0.03, 0, 0);<br>
+&emsp;}<br>
+&emsp;if(keyIsDown(DOWN_ARROW)) {<br>
+&emsp;&emsp;ponyta.rotate(0.03, 0, 0);<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;//ponyta.renderWireframe();<br>
+&emsp;<br>
+&emsp;if(fil) {<br>
+&emsp;&emsp;ponyta.renderVoxel();<br>
+&emsp;}<br>
+&emsp;else {<br>
+&emsp;&emsp;ponyta.renderWireframe();<br>
+&emsp;}<br>
 <br>
 }<br>
 <br>
 function keyPressed() {<br>
-&ensp;if(key == "v") { //Render Filled in<br>
-&ensp;&ensp;fil = true;<br>
-&ensp;} else if(key == "w") { //Render Wire Frame<br>
-&ensp;&ensp;fil = false;<br>
-&ensp;}<br>
+&emsp;if(key == "v") { //Render Filled in<br>
+&emsp;&emsp;fil = true;<br>
+&emsp;} else if(key == "w") { //Render Wire Frame<br>
+&emsp;&emsp;fil = false;<br>
+&emsp;}<br>
 }<br>
 <br>
 class Ponyta { //Ponyta is an object which contains a preset array of cubes in the shape and color of the Pokemon Ponyta<br>
-&ensp;<br>
-&ensp;constructor(x, y, z) {<br>
-&ensp;&ensp;this.x = x;<br>
-&ensp;&ensp;this.y = y;<br>
-&ensp;&ensp;this.z = z;<br>
-&ensp;&ensp;let verticies = [<br>
-&ensp;&ensp;&ensp;new Cube(0, 0, 0, 0), <br>
-&ensp;&ensp;&ensp;new Cube(0, 0, -10, 0), <br>
-&ensp;&ensp;&ensp;new Cube(-10, 0, -10, 0), <br>
-&ensp;&ensp;&ensp;new Cube(-10, 0, 0, 0),<br>
-&ensp;&ensp;&ensp;new Cube(0, -10, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -10, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -10, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -10, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -20, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -20, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -20, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -20, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -30, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -30, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -30, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -40, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -50, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -30, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -40, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -50, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -40, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -50, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -40, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -50, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -40, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -50, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -110, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -110, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -110, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -110, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(40, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(60, -120, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(40, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(60, -130, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -140, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -140, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -140, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -140, 0, 3),<br>
-&ensp;&ensp;&ensp;new Cube(40, -140, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -140, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -150, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -150, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -150, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -150, 0, 4),<br>
-&ensp;&ensp;&ensp;new Cube(40, -150, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -160, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -160, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -160, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -160, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -160, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -170, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -170, 0, 5),<br>
-&ensp;&ensp;&ensp;new Cube(10, -180, 0, 5),<br>
-&ensp;&ensp;&ensp;new Cube(0, -180, 0, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -70, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -70, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -80, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -100, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -100, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -100, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -60, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -60, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -80, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -90, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -100, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -90, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -60, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -80, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -20, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -30, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -40, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -50, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -20, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -30, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -40, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -50, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -20, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -30, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -40, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -50, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -20, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -30, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -40, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -50, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -10, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -10, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -10, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -10, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, 0, 0, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-80, 0, -10, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-90, 0, 0, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-90, 0, -10, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -50, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -50, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -40, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -40, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -30, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -30, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -50, -10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -50, 0, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -60, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -50, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -40, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -30, -20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -20, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -70, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -60, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -80, -20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -170, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -180, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(10, -170, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -170, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -180, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -110, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -110, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -110, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -110, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -110, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -110, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -100, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -100, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -100, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -90, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-140, -110, 0, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -120, 0, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -120, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -120, 0, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -100, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -110, -10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -120, -10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(0, 0, 20, 0), <br>
-&ensp;&ensp;&ensp;new Cube(0, 0, 30, 0), <br>
-&ensp;&ensp;&ensp;new Cube(-10, 0, 30, 0), <br>
-&ensp;&ensp;&ensp;new Cube(-10, 0, 20, 0),<br>
-&ensp;&ensp;&ensp;new Cube(0, -10, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -10, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -10, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -10, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -20, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -20, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -20, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -20, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -30, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -30, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -30, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -40, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -50, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -30, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -40, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -50, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -40, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -50, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -40, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -50, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -40, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -50, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -110, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -110, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -110, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -110, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(40, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(60, -120, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(40, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(60, -130, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -140, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -140, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -140, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -140, 20, 3),<br>
-&ensp;&ensp;&ensp;new Cube(40, -140, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -140, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -150, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -150, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -150, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -150, 20, 4),<br>
-&ensp;&ensp;&ensp;new Cube(40, -150, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -160, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -160, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -160, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -160, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -160, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -170, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -170, 20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(10, -180, 20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(0, -180, 20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -70, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -70, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -80, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -100, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -100, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -100, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -60, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -60, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -80, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -90, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -100, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -90, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -60, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -80, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -20, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -30, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -40, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -50, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -20, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -30, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -40, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -50, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -20, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -30, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -40, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -50, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -20, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -30, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -40, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -50, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -10, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -10, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -10, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -10, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, 0, 20, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-80, 0, 30, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-90, 0, 20, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-90, 0, 30, 0),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -50, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -50, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -40, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -40, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -30, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -30, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -50, 30, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -50, 20, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -60, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -50, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -40, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -30, 40, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -20, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -70, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -60, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -80, 40, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -170, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -180, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(10, -170, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(0, -170, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -180, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -110, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -110, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -110, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -110, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -110, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -110, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -100, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -100, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -100, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -90, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-140, -110, 20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -120, 20, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -120, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -120, 20, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -100, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -110, 30, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -120, 30, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -110, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -110, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -110, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -120, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -120, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -120, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-140, -120, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-150, -120, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-150, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-150, -140, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-160, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-160, -140, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-170, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-140, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-140, -140, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -130, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-140, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-130, -110, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-120, -100, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-110, -90, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-100, -80, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-90, -70, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-80, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-70, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-60, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -60, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -70, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -80, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(0, -90, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -120, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -130, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -140, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -140, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -150, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -150, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(0, -100, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(10, -110, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(20, -110, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -120, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(40, -120, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -120, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(60, -120, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(60, -130, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(50, -140, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(40, -150, 10, 1),<br>
-&ensp;&ensp;&ensp;new Cube(30, -160, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(20, -170, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(10, -180, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(0, -180, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -180, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -190, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -180, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -190, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -180, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -190, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -180, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-40, -190, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-50, -190, 10, 5),<br>
-&ensp;&ensp;&ensp;new Cube(-10, -160, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-20, -170, 10, 2),<br>
-&ensp;&ensp;&ensp;new Cube(-30, -170, 10, 5)<br>
-&ensp;&ensp;];<br>
-&ensp;&ensp;for(let i = 0; i < verticies.length; i++) {<br>
-&ensp;&ensp;&ensp;for(let j = 0; j < verticies[i].v.length; j++) {<br>
-&ensp;&ensp;&ensp;&ensp;verticies[i].v[j][0] += x;<br>
-&ensp;&ensp;&ensp;&ensp;verticies[i].v[j][1] += y;<br>
-&ensp;&ensp;&ensp;&ensp;verticies[i].v[j][2] += z;<br>
-&ensp;&ensp;&ensp;}<br>
-&ensp;&ensp;}<br>
-&ensp;&ensp;this.v = verticies;<br>
-&ensp;}<br>
-&ensp;<br>
-&ensp;rotate(tx, ty, tz) {<br>
-&ensp;&ensp;for(let i = 0; i < this.v.length; i++) {<br>
-&ensp;&ensp;&ensp;this.v[i].rotate(tx, ty, tz);<br>
-&ensp;&ensp;}<br>
-&ensp;}<br>
-&ensp;<br>
-&ensp;renderWireframe() { //Render cubes as wireframe, sorted to appear correct on z-axis<br>
-&ensp;&ensp;this.v = this.v.sort((a, b) => b.v[0][2] - a.v[0][2]);<br>
-&ensp;&ensp;for(let i = 0; i < this.v.length; i++) {<br>
-&ensp;&ensp;&ensp;this.v[i].renderWireframe();<br>
-&ensp;&ensp;}<br>
-&ensp;}<br>
-&ensp;<br>
-&ensp;renderVoxel() { //Render cubes as "voxels", sorted to appear correct on z-axis<br>
-&ensp;&ensp;noStroke();<br>
-&ensp;&ensp;this.v = this.v.sort((a, b) => b.v[0][2] - a.v[0][2]);<br>
-&ensp;&ensp;for(let i = 0; i < this.v.length; i++) {<br>
-&ensp;&ensp;&ensp;this.v[i].renderVoxel();<br>
-&ensp;&ensp;}<br>
-&ensp;}<br>
-&ensp;<br>
+&emsp;<br>
+&emsp;constructor(x, y, z) {<br>
+&emsp;&emsp;this.x = x;<br>
+&emsp;&emsp;this.y = y;<br>
+&emsp;&emsp;this.z = z;<br>
+&emsp;&emsp;let verticies = [<br>
+&emsp;&emsp;&emsp;new Cube(0, 0, 0, 0), <br>
+&emsp;&emsp;&emsp;new Cube(0, 0, -10, 0), <br>
+&emsp;&emsp;&emsp;new Cube(-10, 0, -10, 0), <br>
+&emsp;&emsp;&emsp;new Cube(-10, 0, 0, 0),<br>
+&emsp;&emsp;&emsp;new Cube(0, -10, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -10, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -10, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -10, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -20, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -20, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -20, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -20, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -30, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -30, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -30, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -40, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -50, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -30, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -40, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -50, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -40, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -50, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -40, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -50, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -40, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -50, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -110, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -110, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -110, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -110, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(40, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(60, -120, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(40, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(60, -130, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -140, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -140, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -140, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -140, 0, 3),<br>
+&emsp;&emsp;&emsp;new Cube(40, -140, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -140, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -150, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -150, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -150, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -150, 0, 4),<br>
+&emsp;&emsp;&emsp;new Cube(40, -150, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -160, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -160, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -160, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -160, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -160, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -170, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -170, 0, 5),<br>
+&emsp;&emsp;&emsp;new Cube(10, -180, 0, 5),<br>
+&emsp;&emsp;&emsp;new Cube(0, -180, 0, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -70, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -70, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -80, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -100, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -100, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -100, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -60, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -60, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -80, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -90, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -100, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -90, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -60, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -80, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -20, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -30, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -40, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -50, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -20, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -30, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -40, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -50, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -20, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -30, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -40, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -50, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -20, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -30, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -40, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -50, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -10, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -10, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -10, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -10, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, 0, 0, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-80, 0, -10, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-90, 0, 0, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-90, 0, -10, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -50, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -50, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -40, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -40, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -30, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -30, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -50, -10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -50, 0, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -60, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -50, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -40, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -30, -20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -20, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -70, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -60, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -80, -20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -170, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -180, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(10, -170, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -170, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -180, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -110, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -110, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -110, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -110, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -110, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -110, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -100, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -100, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -100, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -90, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-140, -110, 0, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -120, 0, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -120, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -120, 0, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -100, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -110, -10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -120, -10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(0, 0, 20, 0), <br>
+&emsp;&emsp;&emsp;new Cube(0, 0, 30, 0), <br>
+&emsp;&emsp;&emsp;new Cube(-10, 0, 30, 0), <br>
+&emsp;&emsp;&emsp;new Cube(-10, 0, 20, 0),<br>
+&emsp;&emsp;&emsp;new Cube(0, -10, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -10, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -10, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -10, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -20, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -20, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -20, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -20, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -30, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -30, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -30, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -40, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -50, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -30, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -40, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -50, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -40, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -50, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -40, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -50, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -40, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -50, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -110, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -110, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -110, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -110, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(40, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(60, -120, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(40, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(60, -130, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -140, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -140, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -140, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -140, 20, 3),<br>
+&emsp;&emsp;&emsp;new Cube(40, -140, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -140, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -150, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -150, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -150, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -150, 20, 4),<br>
+&emsp;&emsp;&emsp;new Cube(40, -150, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -160, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -160, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -160, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -160, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -160, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -170, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -170, 20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(10, -180, 20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(0, -180, 20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -70, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -70, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -80, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -100, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -100, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -100, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -60, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -60, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -80, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -90, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -100, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -90, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -60, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -80, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -20, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -30, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -40, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -50, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -20, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -30, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -40, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -50, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -20, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -30, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -40, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -50, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -20, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -30, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -40, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -50, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -10, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -10, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -10, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -10, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, 0, 20, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-80, 0, 30, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-90, 0, 20, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-90, 0, 30, 0),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -50, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -50, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -40, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -40, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -30, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -30, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -50, 30, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -50, 20, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -60, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -50, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -40, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -30, 40, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -20, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -70, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -60, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -80, 40, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -170, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -180, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(10, -170, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(0, -170, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -180, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -110, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -110, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -110, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -110, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -110, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -110, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -100, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -100, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -100, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -90, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-140, -110, 20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -120, 20, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -120, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -120, 20, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -100, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -110, 30, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -120, 30, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -110, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -110, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -110, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -120, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -120, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -120, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-140, -120, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-150, -120, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-150, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-150, -140, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-160, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-160, -140, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-170, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-140, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-140, -140, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -130, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-140, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-130, -110, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-120, -100, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-110, -90, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-100, -80, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-90, -70, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-80, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-70, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-60, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -60, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -70, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -80, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(0, -90, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -120, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -130, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -140, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -140, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -150, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -150, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(0, -100, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(10, -110, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(20, -110, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -120, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(40, -120, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -120, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(60, -120, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(60, -130, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(50, -140, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(40, -150, 10, 1),<br>
+&emsp;&emsp;&emsp;new Cube(30, -160, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(20, -170, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(10, -180, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(0, -180, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -180, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -190, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -180, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -190, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -180, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -190, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -180, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-40, -190, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-50, -190, 10, 5),<br>
+&emsp;&emsp;&emsp;new Cube(-10, -160, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-20, -170, 10, 2),<br>
+&emsp;&emsp;&emsp;new Cube(-30, -170, 10, 5)<br>
+&emsp;&emsp;];<br>
+&emsp;&emsp;for(let i = 0; i < verticies.length; i++) {<br>
+&emsp;&emsp;&emsp;for(let j = 0; j < verticies[i].v.length; j++) {<br>
+&emsp;&emsp;&emsp;&emsp;verticies[i].v[j][0] += x;<br>
+&emsp;&emsp;&emsp;&emsp;verticies[i].v[j][1] += y;<br>
+&emsp;&emsp;&emsp;&emsp;verticies[i].v[j][2] += z;<br>
+&emsp;&emsp;&emsp;}<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;this.v = verticies;<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;rotate(tx, ty, tz) {<br>
+&emsp;&emsp;for(let i = 0; i < this.v.length; i++) {<br>
+&emsp;&emsp;&emsp;this.v[i].rotate(tx, ty, tz);<br>
+&emsp;&emsp;}<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;renderWireframe() { //Render cubes as wireframe, sorted to appear correct on z-axis<br>
+&emsp;&emsp;this.v = this.v.sort((a, b) => b.v[0][2] - a.v[0][2]);<br>
+&emsp;&emsp;for(let i = 0; i < this.v.length; i++) {<br>
+&emsp;&emsp;&emsp;this.v[i].renderWireframe();<br>
+&emsp;&emsp;}<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;renderVoxel() { //Render cubes as "voxels", sorted to appear correct on z-axis<br>
+&emsp;&emsp;noStroke();<br>
+&emsp;&emsp;this.v = this.v.sort((a, b) => b.v[0][2] - a.v[0][2]);<br>
+&emsp;&emsp;for(let i = 0; i < this.v.length; i++) {<br>
+&emsp;&emsp;&emsp;this.v[i].renderVoxel();<br>
+&emsp;&emsp;}<br>
+&emsp;}<br>
+&emsp;<br>
 }<br>
 <br>
 class Cube { //Essentially the cube from class but with color (defined in the constructor), variable side length and other optomizations for my application<br>
-&ensp;<br>
-&ensp;constructor(x, y, z, c = 3, sideLength = 10) {<br>
-&ensp;&ensp;this.s = sideLength;<br>
-&ensp;&ensp;this.x = x;<br>
-&ensp;&ensp;this.y = y;<br>
-&ensp;&ensp;this.z = z;<br>
-&ensp;&ensp;let col;<br>
-&ensp;&ensp;switch(c) {<br>
-&ensp;&ensp;&ensp;case 0:<br>
-&ensp;&ensp;&ensp;&ensp;col = color(36, 36, 69);<br>
-&ensp;&ensp;&ensp;&ensp;break;<br>
-&ensp;&ensp;&ensp;case 1:<br>
-&ensp;&ensp;&ensp;&ensp;col = color(230, 230, 146);<br>
-&ensp;&ensp;&ensp;&ensp;break;<br>
-&ensp;&ensp;&ensp;case 2:<br>
-&ensp;&ensp;&ensp;&ensp;col = color(223, 128, 69);<br>
-&ensp;&ensp;&ensp;&ensp;break;<br>
-&ensp;&ensp;&ensp;case 3:<br>
-&ensp;&ensp;&ensp;&ensp;col = color(0);<br>
-&ensp;&ensp;&ensp;&ensp;break;<br>
-&ensp;&ensp;&ensp;case 4:<br>
-&ensp;&ensp;&ensp;&ensp;col = color(255);<br>
-&ensp;&ensp;&ensp;&ensp;break;<br>
-&ensp;&ensp;&ensp;case 5:<br>
-&ensp;&ensp;&ensp;&ensp;col = color(240, 157, 70);<br>
-&ensp;&ensp;&ensp;&ensp;break;<br>
-&ensp;&ensp;}<br>
-&ensp;&ensp;this.col = col;<br>
-&ensp;&ensp;let s = sideLength / 2;<br>
-&ensp;&ensp;let verticies = [[-s, s, s], [s, s, s], [s, -s, s], [-s, -s, s], [-s, s, -s], [s, s, -s], [s, -s, -s], [-s, -s, -s]];<br>
-&ensp;&ensp;for(let i = 0; i < verticies.length; i++) {<br>
-&ensp;&ensp;&ensp;verticies[i][0] += x;<br>
-&ensp;&ensp;&ensp;verticies[i][1] += y;<br>
-&ensp;&ensp;&ensp;verticies[i][2] += z;<br>
-&ensp;&ensp;}<br>
-&ensp;&ensp;this.v = verticies;<br>
-&ensp;&ensp;this.c = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 5], [2, 6], [3, 7], [4, 5], [5, 6], [6, 7], [7, 4]];<br>
-&ensp;&ensp;this.vox =[[0, 1, 2, 3], [4, 5, 6, 7], [0, 4, 5, 1], [1, 5, 6, 2], [2, 6, 7, 3], [3, 7, 4, 0]];<br>
-&ensp;}<br>
-&ensp;<br>
-&ensp;rotate(tx, ty, tz) {<br>
-&ensp;&ensp;if(tx != 0) {<br>
-&ensp;&ensp;&ensp;for(let i = 0; i < this.v.length; i++) {<br>
-&ensp;&ensp;&ensp;&ensp;const ny = this.v[i][1] * cos(tx) - this.v[i][2] * sin(tx); <br>
-&ensp;&ensp;&ensp;&ensp;this.v[i][2] = this.v[i][1] * sin(tx) + this.v[i][2] * cos(tx); <br>
-&ensp;&ensp;&ensp;&ensp;this.v[i][1] = ny;<br>
-&ensp;&ensp;&ensp;}<br>
-&ensp;&ensp;}<br>
-&ensp;&ensp;if(ty != 0) {<br>
-&ensp;&ensp;&ensp;for(let i = 0; i < this.v.length; i++) {<br>
-&ensp;&ensp;&ensp;&ensp;const nx = this.v[i][0] * cos(ty) + this.v[i][2] * sin(ty); <br>
-&ensp;&ensp;&ensp;&ensp;this.v[i][2] = -this.v[i][0] * sin(ty) + this.v[i][2] * cos(ty); <br>
-&ensp;&ensp;&ensp;&ensp;this.v[i][0] = nx;<br>
-&ensp;&ensp;&ensp;}<br>
-&ensp;&ensp;}<br>
-&ensp;&ensp;if(tz != 0) {<br>
-&ensp;&ensp;&ensp;for(let i = 0; i < this.v.length; i++) {<br>
-&ensp;&ensp;&ensp;&ensp;const nx = this.v[i][0] * cos(tz) - this.v[i][1] * sin(tz); <br>
-&ensp;&ensp;&ensp;&ensp;this.v[i][1] = this.v[i][0] * sin(tz) + this.v[i][1] * cos(tz);<br>
-&ensp;&ensp;&ensp;&ensp;this.v[i][0] = nx;<br>
-&ensp;&ensp;&ensp;}<br>
-&ensp;&ensp;}<br>
-&ensp;} <br>
-&ensp;<br>
-&ensp;renderWireframe() {<br>
-&ensp;&ensp;stroke(this.col);<br>
-&ensp;&ensp;//stroke(0);<br>
-&ensp;&ensp;//strokeWeight(5);<br>
-&ensp;&ensp;for(let i = 0; i < this.c.length; i++) {<br>
-&ensp;&ensp;&ensp;line(this.v[this.c[i][0]][0], this.v[this.c[i][0]][1], this.v[this.c[i][1]][0], this.v[this.c[i][1]][1]);<br>
-&ensp;&ensp;}<br>
-&ensp;}<br>
-&ensp;<br>
-&ensp;renderVoxel() { //Fill in the sides of the cube like as if it was a voxel<br>
-&ensp;&ensp;fill(this.col);<br>
-&ensp;&ensp;for(let i = 0; i < this.vox.length; i++) {<br>
-&ensp;&ensp;&ensp;beginShape();<br>
-&ensp;&ensp;&ensp;vertex(this.v[this.vox[i][0]][0], this.v[this.vox[i][0]][1]);<br>
-&ensp;&ensp;&ensp;vertex(this.v[this.vox[i][1]][0], this.v[this.vox[i][1]][1]);<br>
-&ensp;&ensp;&ensp;vertex(this.v[this.vox[i][2]][0], this.v[this.vox[i][2]][1]);<br>
-&ensp;&ensp;&ensp;vertex(this.v[this.vox[i][3]][0], this.v[this.vox[i][3]][1]);<br>
-&ensp;&ensp;&ensp;endShape();<br>
-&ensp;&ensp;}<br>
-&ensp;}<br>
-&ensp;<br>
+&emsp;<br>
+&emsp;constructor(x, y, z, c = 3, sideLength = 10) {<br>
+&emsp;&emsp;this.s = sideLength;<br>
+&emsp;&emsp;this.x = x;<br>
+&emsp;&emsp;this.y = y;<br>
+&emsp;&emsp;this.z = z;<br>
+&emsp;&emsp;let col;<br>
+&emsp;&emsp;switch(c) {<br>
+&emsp;&emsp;&emsp;case 0:<br>
+&emsp;&emsp;&emsp;&emsp;col = color(36, 36, 69);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case 1:<br>
+&emsp;&emsp;&emsp;&emsp;col = color(230, 230, 146);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case 2:<br>
+&emsp;&emsp;&emsp;&emsp;col = color(223, 128, 69);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case 3:<br>
+&emsp;&emsp;&emsp;&emsp;col = color(0);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case 4:<br>
+&emsp;&emsp;&emsp;&emsp;col = color(255);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case 5:<br>
+&emsp;&emsp;&emsp;&emsp;col = color(240, 157, 70);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;this.col = col;<br>
+&emsp;&emsp;let s = sideLength / 2;<br>
+&emsp;&emsp;let verticies = [[-s, s, s], [s, s, s], [s, -s, s], [-s, -s, s], [-s, s, -s], [s, s, -s], [s, -s, -s], [-s, -s, -s]];<br>
+&emsp;&emsp;for(let i = 0; i < verticies.length; i++) {<br>
+&emsp;&emsp;&emsp;verticies[i][0] += x;<br>
+&emsp;&emsp;&emsp;verticies[i][1] += y;<br>
+&emsp;&emsp;&emsp;verticies[i][2] += z;<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;this.v = verticies;<br>
+&emsp;&emsp;this.c = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 5], [2, 6], [3, 7], [4, 5], [5, 6], [6, 7], [7, 4]];<br>
+&emsp;&emsp;this.vox =[[0, 1, 2, 3], [4, 5, 6, 7], [0, 4, 5, 1], [1, 5, 6, 2], [2, 6, 7, 3], [3, 7, 4, 0]];<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;rotate(tx, ty, tz) {<br>
+&emsp;&emsp;if(tx != 0) {<br>
+&emsp;&emsp;&emsp;for(let i = 0; i < this.v.length; i++) {<br>
+&emsp;&emsp;&emsp;&emsp;const ny = this.v[i][1] * cos(tx) - this.v[i][2] * sin(tx); <br>
+&emsp;&emsp;&emsp;&emsp;this.v[i][2] = this.v[i][1] * sin(tx) + this.v[i][2] * cos(tx); <br>
+&emsp;&emsp;&emsp;&emsp;this.v[i][1] = ny;<br>
+&emsp;&emsp;&emsp;}<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;if(ty != 0) {<br>
+&emsp;&emsp;&emsp;for(let i = 0; i < this.v.length; i++) {<br>
+&emsp;&emsp;&emsp;&emsp;const nx = this.v[i][0] * cos(ty) + this.v[i][2] * sin(ty); <br>
+&emsp;&emsp;&emsp;&emsp;this.v[i][2] = -this.v[i][0] * sin(ty) + this.v[i][2] * cos(ty); <br>
+&emsp;&emsp;&emsp;&emsp;this.v[i][0] = nx;<br>
+&emsp;&emsp;&emsp;}<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;if(tz != 0) {<br>
+&emsp;&emsp;&emsp;for(let i = 0; i < this.v.length; i++) {<br>
+&emsp;&emsp;&emsp;&emsp;const nx = this.v[i][0] * cos(tz) - this.v[i][1] * sin(tz); <br>
+&emsp;&emsp;&emsp;&emsp;this.v[i][1] = this.v[i][0] * sin(tz) + this.v[i][1] * cos(tz);<br>
+&emsp;&emsp;&emsp;&emsp;this.v[i][0] = nx;<br>
+&emsp;&emsp;&emsp;}<br>
+&emsp;&emsp;}<br>
+&emsp;} <br>
+&emsp;<br>
+&emsp;renderWireframe() {<br>
+&emsp;&emsp;stroke(this.col);<br>
+&emsp;&emsp;//stroke(0);<br>
+&emsp;&emsp;//strokeWeight(5);<br>
+&emsp;&emsp;for(let i = 0; i < this.c.length; i++) {<br>
+&emsp;&emsp;&emsp;line(this.v[this.c[i][0]][0], this.v[this.c[i][0]][1], this.v[this.c[i][1]][0], this.v[this.c[i][1]][1]);<br>
+&emsp;&emsp;}<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;renderVoxel() { //Fill in the sides of the cube like as if it was a voxel<br>
+&emsp;&emsp;fill(this.col);<br>
+&emsp;&emsp;for(let i = 0; i < this.vox.length; i++) {<br>
+&emsp;&emsp;&emsp;beginShape();<br>
+&emsp;&emsp;&emsp;vertex(this.v[this.vox[i][0]][0], this.v[this.vox[i][0]][1]);<br>
+&emsp;&emsp;&emsp;vertex(this.v[this.vox[i][1]][0], this.v[this.vox[i][1]][1]);<br>
+&emsp;&emsp;&emsp;vertex(this.v[this.vox[i][2]][0], this.v[this.vox[i][2]][1]);<br>
+&emsp;&emsp;&emsp;vertex(this.v[this.vox[i][3]][0], this.v[this.vox[i][3]][1]);<br>
+&emsp;&emsp;&emsp;endShape();<br>
+&emsp;&emsp;}<br>
+&emsp;}<br>
+&emsp;<br>
 }<br></p>
   </body>
 </html>
