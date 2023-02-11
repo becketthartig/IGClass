@@ -12,7 +12,7 @@ function preload() {
 
 function setup() {
   
-  createCanvas(400, 400, WEBGL);
+  createCanvas(windowWidth / 3, windowWidth / 3, WEBGL);
   noStroke();
   
   planets.push(new Planet("sun", 
@@ -195,4 +195,8 @@ class Planet {
     
   }
   
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth / 3, windowWidth / 3);
 }
