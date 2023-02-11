@@ -98,7 +98,9 @@ function draw() {
   
   background(14);
   
-  pointLight(255, 255, 255, 0, 0, 0);
+  pointLight(200, 200, 200, 0, 0, 0);
+  pointLight(200, 200, 200, 0, 100, 0);
+  pointLight(200, 200, 200, 0, -100, 0);
   
   orbitControl();
   
