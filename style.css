@@ -50,8 +50,6 @@ a {
 }
 
 .blurb {
-    position: relative;
-    top: -5px;
     border: 16px solid #00008B;
     height: calc(100vh - 100vw/3 - 41px);
     padding: 5px 12px;
