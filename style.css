@@ -23,7 +23,7 @@ canvas {
     top: -1px;
 }
 
-body.index, body.ponyta, body.iglogo, body.appleiianimation {
+body.index, body.ponyta, body.iglogo, body.appleiianimation, body.solarSystem {
     background-color: #36c3ff;
     color: white;
 }
@@ -40,7 +40,7 @@ body.index {
     height: 100vw;
 }
 
-body.ponyta, body.iglogo, body.appleiianimation {
+body.ponyta, body.iglogo, body.appleiianimation, body.solarSystem {
     height: 100vh;
 }
 
