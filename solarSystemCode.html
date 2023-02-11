@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="rawcode">
+    <a href="solarSystem.html">< Return</a>
+    <br>
+    <br>
+    <p>let cam;<br>
+<br>
+let planets = [];<br>
+let focusIndex = 0;<br>
+let lastFocusLoc;<br>
+<br>
+let img;<br>
+<br>
+function preload() {<br>
+&emsp;img = loadImage("360_F_100126078_Ltb5kvNjYBLQQCkgkGSvv1N4HR3C1SND.jpg");<br>
+}<br>
+<br>
+function setup() {<br>
+&emsp;<br>
+&emsp;createCanvas(400, 400, WEBGL);<br>
+&emsp;noStroke();<br>
+&emsp;<br>
+&emsp;planets.push(new Planet("sun", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(0, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;10, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;0, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(255, 255, 153), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-100, -50, 50), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"sphere"));<br>
+&emsp;planets.push(new Planet("mercury", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(60, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 4, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(220), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"box"));<br>
+&emsp;planets.push(new Planet("venus", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(120, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;3, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 9, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(255, 128, 128), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"box"));<br>
+&emsp;planets.push(new Planet("earth",<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(230, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;4, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 18, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(100, 100, 255), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"sphere"));<br>
+&emsp;planets.push(new Planet("mars", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(370, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[1, 2, 1], <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 40, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(153, 51, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"ellipsoid"));<br>
+&emsp;planets.push(new Planet("stardust-6", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(600, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[1, 2], <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 64, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(247, 208, 203), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"cone"));<br>
+&emsp;planets.push(new Planet("stardust-7", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(640, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[1, 2], <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 64, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(237, 228, 193), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"cylinder"));<br>
+&emsp;planets.push(new Planet("stardust-8", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(680, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[1, 0.5], <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 64, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(227, 198, 233), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"torus"));<br>
+&emsp;planets.push(new Planet("stellarum", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(870, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;undefined, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 91, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(100, 100, 255), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"pyramid"));<br>
+&emsp;planets.push(new Planet("systems-edge", <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(1000, 0, 0), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[3, 1.5], <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Math.PI / 110, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;color(250), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;createVector(-30, -30, 30), <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"torus"));<br>
+&emsp;<br>
+&emsp;cam = createCamera();<br>
+&emsp;cam.perspective(Math.PI / 3, 1, 0.01);<br>
+&emsp;cam.setPosition(planets[focusIndex].pos.x + planets[focusIndex].off.x, planets[focusIndex].pos.y + planets[focusIndex].off.y, planets[focusIndex].pos.z + planets[focusIndex].off.z);<br>
+&emsp;lastFocusLoc = planets[focusIndex].pos.copy();<br>
+&emsp;cam.lookAt(planets[focusIndex].pos.x, planets[focusIndex].pos.y, planets[focusIndex].pos.z);<br>
+&emsp;<br>
+}<br>
+<br>
+function draw() {<br>
+&emsp;<br>
+&emsp;background(14);<br>
+&emsp;<br>
+&emsp;pointLight(255, 255, 255, 0, 0, 0);<br>
+&emsp;<br>
+&emsp;orbitControl();<br>
+&emsp;<br>
+&emsp;planets[8].col = lerpColor(color(214, 245, 245), color(75, 0, 130), Math.abs(Math.sin(frameCount / 300)));<br>
+&emsp;<br>
+&emsp;for (const planet of planets) {<br>
+&emsp;&emsp;planet.updatePos(deltaTime / 1000);<br>
+&emsp;&emsp;planet.render();<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;const deltaPlanetPosition = lastFocusLoc.copy().sub(planets[focusIndex].pos.copy());<br>
+&emsp;lastFocusLoc = planets[focusIndex].pos.copy();<br>
+&emsp;cam.setPosition(cam.eyeX - deltaPlanetPosition.x, cam.eyeY - deltaPlanetPosition.y, cam.eyeZ - deltaPlanetPosition.z);<br>
+&emsp;cam.lookAt(planets[focusIndex].pos.x, planets[focusIndex].pos.y, planets[focusIndex].pos.z);<br>
+&emsp;<br>
+&emsp;if (frameCount == 1) {<br>
+&emsp;&emsp;saveGif('solarSystem', 2.5);<br>
+&emsp;}<br>
+&emsp;<br>
+}<br>
+<br>
+function keyPressed() {<br>
+&emsp;<br>
+&emsp;if (keyCode == LEFT_ARROW) {<br>
+&emsp;&emsp;focusIndex = focusIndex == 0 ? planets.length - 1 : focusIndex - 1;<br>
+&emsp;&emsp;cam.setPosition(planets[focusIndex].pos.x + planets[focusIndex].off.x, planets[focusIndex].pos.y + planets[focusIndex].off.y, planets[focusIndex].pos.z + planets[focusIndex].off.z);<br>
+&emsp;&emsp;lastFocusLoc = planets[focusIndex].pos.copy();<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;if (keyCode == RIGHT_ARROW) {<br>
+&emsp;&emsp;focusIndex = focusIndex + 1 == planets.length ? 0 : focusIndex + 1;<br>
+&emsp;&emsp;cam.setPosition(planets[focusIndex].pos.x + planets[focusIndex].off.x, planets[focusIndex].pos.y + planets[focusIndex].off.y, planets[focusIndex].pos.z + planets[focusIndex].off.z);<br>
+&emsp;&emsp;lastFocusLoc = planets[focusIndex].pos.copy();<br>
+&emsp;}<br>
+&emsp;<br>
+}<br>
+<br>
+class Planet {<br>
+&emsp;<br>
+&emsp;constructor(name, positionVector, shapeFieldInfo, orbitRate, color, focusOffset, shape) {<br>
+&emsp;&emsp;this.name = name;<br>
+&emsp;&emsp;this.pos = positionVector;<br>
+&emsp;&emsp;this.SFI = shapeFieldInfo;<br>
+&emsp;&emsp;this.orbit = orbitRate;<br>
+&emsp;&emsp;this.col = color;<br>
+&emsp;&emsp;this.off = focusOffset;<br>
+&emsp;&emsp;this.shape = shape;<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;updatePos(timeStep) {<br>
+&emsp;&emsp;const rotation = -this.orbit * timeStep;<br>
+&emsp;&emsp;const newCords = createVector(this.pos.x, this.pos.z).rotate(rotation);<br>
+&emsp;&emsp;this.pos.x = newCords.x;<br>
+&emsp;&emsp;this.pos.z = newCords.y;<br>
+&emsp;}<br>
+&emsp;<br>
+&emsp;render() {<br>
+<br>
+&emsp;&emsp;fill(this.col);<br>
+&emsp;&emsp;translate(this.pos);<br>
+&emsp;&emsp;if (this.name == "sun" || this.name == "stellarum") {<br>
+&emsp;&emsp;&emsp;emissiveMaterial(this.col);<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;if (this.name == "systems-edge") {<br>
+&emsp;&emsp;&emsp;texture(img);<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;switch (this.shape) {<br>
+&emsp;&emsp;&emsp;case "sphere":<br>
+&emsp;&emsp;&emsp;&emsp;sphere(this.SFI);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case "box":<br>
+&emsp;&emsp;&emsp;&emsp;box(this.SFI);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case "cylinder":<br>
+&emsp;&emsp;&emsp;&emsp;cylinder(this.SFI[0], this.SFI[1]);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case "cone":<br>
+&emsp;&emsp;&emsp;&emsp;cone(this.SFI[0], this.SFI[1]);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case "ellipsoid":<br>
+&emsp;&emsp;&emsp;&emsp;ellipsoid(this.SFI[0], this.SFI[1], this.SFI[2]);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case "torus":<br>
+&emsp;&emsp;&emsp;&emsp;torus(this.SFI[0], this.SFI[1]);<br>
+&emsp;&emsp;&emsp;&emsp;break;<br>
+&emsp;&emsp;&emsp;case "pyramid":<br>
+&emsp;&emsp;&emsp;&emsp;beginShape();<br>
+&emsp;&emsp;&emsp;&emsp;vertex(0, 2, 0);<br>
+&emsp;&emsp;&emsp;&emsp;vertex(0.7, -2, 0.7);<br>
+&emsp;&emsp;&emsp;&emsp;vertex(0.7, -2, -0.7);<br>
+&emsp;&emsp;&emsp;&emsp;vertex(-0.7, -2, -0.7);<br>
+&emsp;&emsp;&emsp;&emsp;vertex(-0.7, -2, 0.7);<br>
+&emsp;&emsp;&emsp;&emsp;vertex(0.7, -2, 0.7);<br>
+&emsp;&emsp;&emsp;&emsp;endShape(CLOSE);<br>
+&emsp;&emsp;}<br>
+&emsp;&emsp;translate(this.pos.copy().mult(-1));<br>
+&emsp;&emsp;emissiveMaterial(color(0));<br>
+&emsp;&emsp;<br>
+&emsp;}<br>
+&emsp;<br>
+}</p>
+  </body>
+</html>
